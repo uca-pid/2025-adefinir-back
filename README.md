@@ -14,4 +14,5 @@ Metacello new
 
 
 ## Dependencias
-npm install prisma typescript ts-node @types/node --save-dev
+* npm install prisma typescript ts-node @types/node --save-dev
+* https://supabase.com/docs/guides/database/prisma
