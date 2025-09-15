@@ -1,6 +1,7 @@
 const { PrismaClient } = require('@prisma/client');
 const express  = require('express')
 import type { NextFunction, Request, Response } from 'express'
+import addRoutes from './routes'
 
 // correr con npm start
 
@@ -9,17 +10,14 @@ const port = 3000
 const prisma = new PrismaClient();
 
 app.use(express.json());
-// addRoutes(app, prisma)
+addRoutes(app, prisma)
 
-app.get('/', async (req: Request, res: Response) => {
-  res.send('Hello World!')
+app.use((req: Request, res: Response, next: NextFunction) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+}); 
 
-  const val = await prisma.Users.findMany({
-    take: 10,
-  });
-  console.log(val);
-
-})
 
 function logErrors(err: Error, req: Request, res: Response, next: NextFunction) {
   console.error(err.stack);
