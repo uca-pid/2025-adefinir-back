@@ -11,3 +11,7 @@ Metacello new
    githubUser: 'uca-argentina' project: 'project-template' commitish: 'master' path: 'repository';
    load: 'development'.
 ```
+
+
+## Dependencias
+npm install prisma typescript ts-node @types/node --save-dev
